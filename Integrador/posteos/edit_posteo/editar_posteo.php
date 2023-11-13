@@ -47,11 +47,7 @@
             // Conectar a la base de datos
             require_once('bd.php');
 
-            // Verificar la conexión
-            if ($conn->connect_error) {
-                die("Error de conexión: " . $conn->connect_error);
-            }
-
+        
             // Consulta para obtener los detalles del posteo
             $sql = "SELECT id, titulo, contenido, imagen_path FROM posteos WHERE id = $id";
             $result = $conn->query($sql);

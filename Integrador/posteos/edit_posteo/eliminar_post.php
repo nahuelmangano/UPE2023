@@ -63,8 +63,8 @@
                             $sql = "UPDATE posteos SET activo = 0 WHERE id = $id_posteo";
 
                             if ($conn->query($sql) === TRUE) {
-                                echo "El posteo ha sido eliminado lógicamente.";
-                                echo ' <a href="../prueba.php" class="btn btn-default">Posteos</a>';
+                                header('Location: ../prueba.php'); // Redirige a la página de inicio de sesión exitosa
+                             
                             } else {
                                 echo "Error al eliminar el posteo: " . $conn->error;
                             }

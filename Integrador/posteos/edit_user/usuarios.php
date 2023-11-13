@@ -35,6 +35,8 @@
                     echo '<a href="eliminar_user.php?id=' . $row['id'] . '"class="btn btn-danger">Eliminar </a>';
                     echo " ";
                     echo '<a href="blanqueo_contraseña.php?id=' . $row['id'] . '"class="btn btn-warning">Blanquear Clave</a>';
+                    echo " ";
+                    echo '<a href="editar_cualquier_usuario.php?id=' . $row['id'] . '"class="btn btn-warning">Editar datos Usuario</a>';
                     echo '</div>';
                     echo '</div>';
                 }

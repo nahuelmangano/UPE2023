@@ -30,8 +30,10 @@
             background-color: #dc3545;
             border-color: #dc3545;
         }
+
         .btn-success {
-            margin-right: 5px; /* Agrega un margen derecho al botón "Sí" */
+            margin-right: 5px;
+            /* Agrega un margen derecho al botón "Sí" */
         }
     </style>
 </head>
@@ -45,7 +47,7 @@
 
                     <?php
                     // Conectar a la base de datos
-                    require_once('../bd.php');
+                    require_once('../../registro/connection_mysql.php');
 
                     if (isset($_GET['id'])) {
                         $id_posteo = $_GET['id'];
@@ -60,15 +62,20 @@
                         if (isset($_GET['confirmar']) && $_GET['confirmar'] == 1) {
                             // Consulta SQL para marcar el posteo como denunciado
                             $sql = "UPDATE posteos SET denuncia = 1 WHERE id = $id_posteo";
+                
+                            $result = $conn->query($sql);
 
-                            if ($conn->query($sql) === TRUE) {
-                                header('Location: denunciado.php');
+                            if ($result) {
+                                             // $insertSql = "INSERT INTO t_denuncias posteo_id VALUES (id_posteo)";
+                            $stmt = $conn->prepare("INSERT INTO t_denuncias (posteo_id) VALUES (?)");
+                            $stmt->execute([$id_posteo]);
+                            
+                                header('Location: ../prueba.php');
                             } else {
                                 echo "Error al denunciar el posteo: " . $conn->error;
                             }
 
-                            // Cierra la conexión a la base de datos
-                            $conn->close();
+                            $conn = null; // Cerrar la conexión
                         }
                     } else {
                         echo "ID de posteo no proporcionado.";

@@ -4,13 +4,9 @@
     <?php
     include("../head.php");
     ?>
+     <link rel="stylesheet" href="../estilos/estilos_post.css">  
     <title>Index</title>
-    <style>
-    .custom-image {
-        width: 100%; /* Ajusta el ancho de la imagen al 100% del contenedor */
-        height: auto; /* Mantiene la proporción original de la imagen */
-    }
-</style>
+
 
 </head>
 <body style="background-color: #d1d5db">

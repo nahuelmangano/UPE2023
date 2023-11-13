@@ -39,7 +39,7 @@
 
 <body>
     <div class="container">
-        <h1>Editar contraseña</h1>
+        <h1>Editar Usuariooo</h1>
         <?php
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -48,33 +48,32 @@
             // Conectar a la base de datos
             require_once('../../registro/connection_mysql.php');
 
-
+        
             // Consulta para obtener los detalles del posteo
-            $sql = "SELECT id, password  FROM usuarios WHERE id = $id";
-
+            $sql = "SELECT id, nombre, email  FROM usuarios WHERE id = $id";
+            
             $result = $conn->query($sql);
-
-
-
+        
+             
+          
 
             if ($result) {
-                $row = $result->fetch(PDO::FETCH_ASSOC);
-
-                ?>
-                <form method="post" action="guardar_pass.php">
-                <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
+                $row = $result->fetch(PDO::FETCH_ASSOC);             
                 
+                ?>
+                <form action="guardar_edit_user.php" method="post" >
+                    <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
                     <div class="form-group">
-                        <label>Nueva Contraseña</label>
-                        <input type="password" name="new_password" class="form-control" required>
+                        <label for="nombre_nuevo">Nombre nuevo:</label>
+                        <input type="text" class="form-control" id="nombre_nuevo" name="nombre_nuevo" value="<?php echo $row["nombre"]; ?>">
                     </div>
                     <div class="form-group">
-                        <label>Confirmar Contraseña</label>
-                        <input type="password" name="confirm_password" class="form-control" required>
+                        <label for="nombre_email">Email nuevo:</label>
+                        <input type="text" class="form-control" id="nombre_email" name="nombre_email" value="<?php echo $row["email"]; ?>">
                     </div>
-                    <br>
-                    <button type="submit" class="btn btn-primary">Cambiar Contraseña</button>
-                    <a href="../prueba.php" class="btn btn-warning">Posteos</a>
+                   
+                   
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                 </form>
                 <?php
             } else {

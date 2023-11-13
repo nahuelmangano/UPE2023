@@ -2,26 +2,13 @@
 <html lang="en">
 
 <head>
-    <?php
+<?php
     include("../head.php");
     ?>
-    <title>Encontrados</title>
-    <style>
-        .post-container {
-            margin-bottom: 20px;
-        }
-
-        .post-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .comment-section {
-            max-height: 100px;
-            overflow-y: auto;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../estilos/estilos_post.css">
+    
+    <title>Perdidos</title>
+   
 </head>
 
 <body style="background-color: #d1d5db">

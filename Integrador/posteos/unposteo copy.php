@@ -16,8 +16,7 @@
 <?php
 require('navbar.php');
 ?>
- <div class="container mt-5">
-        <div class="row">
+<div class="container">
     <h1> Posteo</h1>
   
 
@@ -35,30 +34,33 @@ require('navbar.php');
 
         if ($result) {
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                echo '<div class="col-md-4">';
-                echo '<div class="post-container card mb-3" style="font-size: 14px; ">';
-                       
+                echo '<div class="card mb-3" style="font-size: 14px; ">'; // Agrega el estilo a la tarjeta
+    
                 echo '<h5 class="card-title">' . $row["titulo"] . '</h5>';
                 echo '<br>';
                 if (!empty($row["imagen_path"])) {
-                    echo '<img src="' . $row["imagen_path"] . '" class="card-img-top post-image" alt="Imagen del posteo">';
+                    echo '<img src="' . $row["imagen_path"] . '" class="card-img-top post-image" style="width: 400px;" alt="Imagen del posteo">';
                 }
                 echo '<div class="card-body">';
                 
                 echo '<p class="card-text">' . $row["tipo_post"] . '</p>';
                 echo '<p class="card-text">' . $row["contenido"] . '</p>';
                 echo '<p class="card-text"><small class="text-muted">Fecha de Publicación: ' . $row["fecha_publicacion"] . '</small></p>';
-          // Botones
-          require('botones_posts.php');
+        
 
 
 
 
-                
+                echo '</div>';
+                echo '</div>';
 
                 // Consultar y mostrar los comentarios
                 $posteo_id = $row["id"];
-              
+                echo '<br>';
+                echo '<br>';
+                echo $posteo_id;
+                echo '<br>';
+                echo '<br>';
         $comentarios_sql = "SELECT comentario, fecha_comentario FROM comentarios WHERE posteo_id = $posteo_id";
         $comentarios_result = $conn->query($comentarios_sql);
 
@@ -71,7 +73,6 @@ require('navbar.php');
             }
            
             echo '</div>';
-            echo '</div>';
         }
             }
         } else {
@@ -81,9 +82,8 @@ require('navbar.php');
     ?>
 
 
+<a href="../posteos/denuncias_post.php" >Ver Posteos Denunciados</a>
 
-
-</div>
 </div>
 </body>
 

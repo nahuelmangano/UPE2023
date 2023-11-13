@@ -19,7 +19,8 @@ if ($result) {
         echo '<p class="card-text">' . $row["contenido"] . '</p>';
 
         if (!empty($row["imagen_path"])) {
-            echo '<img src="' . $row["imagen_path"] . '" class="card-img-top custom-image" style="width: 100%; height: 200px; object-fit: cover;" alt="Imagen del posteo">';
+            echo '<img src="' . $row["imagen_path"] . '" class="card-img-top  post-image" " alt="Imagen del posteo">';
+        
         }
 
         echo '<p class="card-text"><small class="text-muted">Fecha de Publicación: ' . $row["fecha_publicacion"] . '</small></p>';
@@ -42,7 +43,8 @@ if ($result) {
                 echo '<p class="card-text">' . $comentario["comentario"] . '</p>';
                 echo '<p class="card-text"><small class="text-muted">Fecha del Comentario: ' . $comentario["fecha_comentario"] . '</small></p>';
             }
-
+             // Botones
+             require('botones_posts.php');
             echo '</div>';
         }
 

@@ -24,8 +24,9 @@
         // Redireccionar o mostrar un mensaje de error, por ejemplo
     }
     ?>
- <div class="container mt-5">
-        <div class="row">
+    <div class="container mt-5 post-container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
 
                 <h1>Mis Posteos</h1>
 
@@ -43,11 +44,11 @@
                     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                         if ($counter % 3 == 0) {
                             // Iniciar una nueva fila después de cada tercer posteo
-                            echo '</div><div class="row">';
+                            echo '<div class="row">';
                         }
 
-                        echo '<div class="col-md-4">';
-                        echo '<div class="post-container card mb-3" style="font-size: 14px; ">';
+                        echo '<div class="col-md-4 mb-3">'; // Tamaño de la columna Bootstrap
+                        echo '<div class="card post-card">';
                         echo '<h5 class="card-title">' . $row["titulo"] . '</h5>';
                         echo '<br>';
                         if (!empty($row["imagen_path"])) {
@@ -59,7 +60,7 @@
                         echo '<p class="card-text"><small class="text-muted">Fecha de Publicación: ' . $row["fecha_publicacion"] . '</small></p>';
                         // Botones
                         require('botones_posts.php');
-                        
+                        echo '</div>';
 
                         // Consultar y mostrar los comentarios
                         $posteo_id = $row["id"];
@@ -75,33 +76,31 @@
                             }
 
                             echo '</div>';
-                            echo '</div>';
-
                         }
 
                         if (isset($_SESSION['user_id'])) {
                             // Si el usuario ha iniciado sesión, mostrar el formulario de comentarios
-                            echo '<div class="card">';
-                    echo '<div class="card-body">';
-                    echo '<h5 class="card-title">Agregar un Comentario</h5>';
-                    echo '<form action="guardar_comentario.php" method="post">';
-                    echo '<input type="hidden" name="posteo_id" value="' . $row['id'] . '">';
-                    echo '<div class="form-group">';
-                    echo '<label for="comentario">Comentario:</label>';
-                    echo '<textarea class="form-control" name="comentario" rows="2" required></textarea>';
-                    echo '</div>';
-                    echo '<br>';
-                    echo '<button type="submit" class="btn btn-primary">Enviar Comentario</button>';
-                    echo '</form>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
+                            echo '<div class="card-body comment-form">';
+                            echo '<h5 class="card-title">Agregar un Comentario</h5>';
+                            echo '<form action="guardar_comentario.php" method="post">';
+                            echo '<input type="hidden" name="posteo_id" value="' . $row['id'] . '">';
+                            echo '<div class="form-group">';
+                            echo '<label for="comentario">Comentario:</label>';
+                            echo '<textarea class="form-control" name="comentario" rows="2" required></textarea>';
+                            echo '</div>';
+                            echo '<br>';
+                            echo '<button type="submit" class="btn btn-primary">Enviar Comentario</button>';
+                            echo '</form>';
+                            echo '</div>';
                         }
 
-                
+                        echo '</div>';
+                        echo '</div>';
 
-                     
+                        if ($counter % 3 == 2 || $counter == $result->rowCount() - 1) {
+                            // Cerrar la fila después del tercer posteo o al final de los posteos
+                            echo '</div>';
+                        }
 
                         $counter++;
                     }
@@ -112,7 +111,7 @@
 
             </div>
         </div>
-
+    </div>
 </body>
 
 </html>

@@ -62,7 +62,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
            
             <br>
-            <button type="submit" name="submit" class="btn btn-primary">guardad cambiossss</button>
+            <button type="submit" name="submit" class="btn btn-primary">Guardar cambios</button>
            
             <a href="../prueba.php" class="btn btn-warning">Posteos</a>
         </form>

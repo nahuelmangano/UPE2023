@@ -5,23 +5,9 @@
     <?php
     include("../head.php");
     ?>
+        <link rel="stylesheet" type="text/css" href="../estilos/estilos_post.css">
     <title>Encontrados</title>
-    <style>
-        .post-container {
-            margin-bottom: 20px;
-        }
 
-        .post-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .comment-section {
-            max-height: 100px;
-            overflow-y: auto;
-        }
-    </style>
 </head>
 
 <body style="background-color: #d1d5db">

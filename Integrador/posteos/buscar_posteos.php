@@ -24,7 +24,7 @@
 <div class="row height d-flex justify-content-center align-items-center">
 
   <div class="col-md-8">
-  <form method="post" action="buscar_new.php">
+  <form method="post" action="buscar_posteos.php">
     <div class="search">
       
       <input type="text" class="form-control" name="busqueda" placeholder="Buscar posteos">
